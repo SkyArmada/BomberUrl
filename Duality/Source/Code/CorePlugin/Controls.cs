@@ -202,13 +202,10 @@ namespace Duality_
             else if(test.Equals("PowerFire"))
             {
                 bombPower++;
-                Log.Core.Write(bombPower.ToString());
-                Scene.Current.RemoveObject(rigidbodyargs.OtherShape.Parent.GameObj);
             }
             else if(test.Equals("PowerBomb"))
             {
                 maxBombs++;
-                Scene.Current.RemoveObject(rigidbodyargs.OtherShape.Parent.GameObj);
             }
         }
 
