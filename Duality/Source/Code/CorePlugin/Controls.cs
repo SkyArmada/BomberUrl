@@ -93,24 +93,38 @@ namespace Duality_
             {
                 if (DualityApp.Keyboard[Key.Right])
                 {
-                    m_Transform.Pos = new Vector3(m_Transform.Pos.X + (Speed * Time.TimeMult), m_Transform.Pos.Y, m_Transform.Pos.Z); //move right
+                    //m_Transform.Pos = new Vector3(m_Transform.Pos.X + (Speed * Time.TimeMult), m_Transform.Pos.Y, m_Transform.Pos.Z); //move right
+                    //m_Rigidbody.LinearVelocity = Vector2.UnitX * Speed;
+                    //m_Rigidbody.ApplyLocalForce(new Vector2(10,0));
                     currentHeading = kHeading.kHeadingEast;
                 }
                 else if (DualityApp.Keyboard[Key.Left])
                 {
-                    m_Transform.Pos = new Vector3(m_Transform.Pos.X - (Speed * Time.TimeMult), m_Transform.Pos.Y, m_Transform.Pos.Z); //move left
+                    xSpeed = xSpeed * -1;
+                    m_Rigidbody.ApplyLocalForce(new Vector2(-10, 0));
+                    //m_Transform.Pos = new Vector3(m_Transform.Pos.X - (Speed * Time.TimeMult), m_Transform.Pos.Y, m_Transform.Pos.Z); //move left
                     currentHeading = kHeading.kHeadingWest;
+                }
+                else
+                {
+                    xSpeed = 0;
                 }
                 if (DualityApp.Keyboard[Key.Up])
                 {
-                    m_Transform.Pos = new Vector3(m_Transform.Pos.X, m_Transform.Pos.Y - (Speed * Time.TimeMult), m_Transform.Pos.Z); //move down
+                    //m_Transform.Pos = new Vector3(m_Transform.Pos.X, m_Transform.Pos.Y - (Speed * Time.TimeMult), m_Transform.Pos.Z); //move down
+                    ySpeed = ySpeed * -1;
                     currentHeading = kHeading.kHeadingNorth;
                 }
                 else if (DualityApp.Keyboard[Key.Down])
                 {
-                    m_Transform.Pos = new Vector3(m_Transform.Pos.X, m_Transform.Pos.Y + (Speed * Time.TimeMult), m_Transform.Pos.Z); //move up
+                    //m_Transform.Pos = new Vector3(m_Transform.Pos.X, m_Transform.Pos.Y + (Speed * Time.TimeMult), m_Transform.Pos.Z); //move up
                     currentHeading = kHeading.kHeadingSouth;
                 }
+                else
+                {
+                    ySpeed = 0;
+                }
+                m_Rigidbody.LinearVelocity = new Vector2(xSpeed, ySpeed);
             }
 
         }
